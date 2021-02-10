@@ -2,19 +2,22 @@ import urllib.request
 import json
 
 
-def print_hi(name):
-    print(f'Hi, {name}')
+def getApiKey():
+    with open('AVApiKey.txt', 'r') as apiKey:
+        return apiKey.readline()
+
+
+def getAlphaVantageURL(function='TIME_SERIES_INTRADAY', symbol='VOO', interval='5'):
+    return 'https://www.alphavantage.co/query?function=' + function + \
+           '&symbol=' + symbol + \
+           '&interval=' + interval + \
+           'min&apikey=' + getApiKey()
+
+
+def getData(url=getAlphaVantageURL()):
+    with urllib.request.urlopen(url) as response:
+        return json.load(response)
 
 
 if __name__ == '__main__':
-    with open('AVApiKey.txt', 'r') as apiKey:
-        API_KEY = apiKey.readline()
-
-    TIME_SERIES_INTRADAY = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=VOO&interval=5min' \
-                           '&apikey=' + API_KEY
-
-    with urllib.request.urlopen(TIME_SERIES_INTRADAY) as response:
-        data = json.load(response)
-
-    print(data)
-    print_hi('PyCharm')
+    print(getData())
