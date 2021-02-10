@@ -1,6 +1,8 @@
 import urllib.request
 import json
 
+USE_LOCAL_JSON = True
+
 
 def getApiKey():
     with open('AVApiKey.txt', 'r') as apiKey:
@@ -15,8 +17,12 @@ def getAlphaVantageURL(function='TIME_SERIES_INTRADAY', symbol='VOO', interval='
 
 
 def getData(url=getAlphaVantageURL()):
-    with urllib.request.urlopen(url) as response:
-        return json.load(response)
+    if USE_LOCAL_JSON:
+        with open('VOO.json') as VOOJson:
+            return json.load(VOOJson)
+    else:
+        with urllib.request.urlopen(url) as response:
+            return json.load(response)
 
 
 if __name__ == '__main__':
