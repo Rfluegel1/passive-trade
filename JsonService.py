@@ -2,8 +2,8 @@
 
 class JsonService:
 
-    def __init__(self, json):
+    def __init__(self, json=''):
         self.json = json
 
-    def getLastUpdate(self):
-        return self.json
+    # def getLastUpdate(self):
+    #     return self.json

@@ -1,5 +1,7 @@
-import urllib.request
 import json
+import urllib.request
+from JsonService import JsonService
+from JsonServiceSpec import TestJsonService
 
 USE_LOCAL_JSON = True
 
@@ -25,5 +27,13 @@ def getData(url=getAlphaVantageURL()):
             return json.load(response)
 
 
+def testJsonService():
+    testJsonService = TestJsonService()
+    testJsonService.setUp()
+    testJsonService.test_initial_json()
+    testJsonService.test_get_most_recent_data()
+
+
 if __name__ == '__main__':
+    testJsonService()
     print(getData())
