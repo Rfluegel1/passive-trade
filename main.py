@@ -36,4 +36,4 @@ def testJsonService():
 
 if __name__ == '__main__':
     testJsonService()
-    print(getData())
+    #print(getData())

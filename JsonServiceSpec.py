@@ -3,8 +3,8 @@ import json
 
 from JsonService import JsonService
 
-with open('VOO.json') as VOOJson:
-    sample_json = json.load(VOOJson)
+with open('VOO.json') as VOOJsonFile:
+    VOOJson = json.load(VOOJsonFile)
 
 
 class TestJsonService(unittest.TestCase):
@@ -15,7 +15,9 @@ class TestJsonService(unittest.TestCase):
         self.assertEqual(self.jsonService.json, '')
 
     def test_get_most_recent_data(self):
-        actualMostRecentData = self.jsonService.getMostRecentData(sample_json)
+        self.maxDiff = None
+        self.jsonService.json = VOOJson
+        actualMostRecentData = self.jsonService.getMostRecentData()
         expectedMostRecentData = {
             "1. open": "358.0200",
             "2. high": "358.0200",
