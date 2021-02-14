@@ -1,5 +1,10 @@
-import urllib.request
 import json
+import urllib.request
+from JsonService import JsonService
+from JsonServiceSpec import TestJsonService
+
+USE_LOCAL_JSON = True
+RUN_TESTS= True
 
 
 def getApiKey():
@@ -15,9 +20,25 @@ def getAlphaVantageURL(function='TIME_SERIES_INTRADAY', symbol='VOO', interval='
 
 
 def getData(url=getAlphaVantageURL()):
-    with urllib.request.urlopen(url) as response:
-        return json.load(response)
+    if USE_LOCAL_JSON:
+        with open('VOO.json') as VOOJson:
+            return json.load(VOOJson)
+    else:
+        with urllib.request.urlopen(url) as response:
+            return json.load(response)
+
+
+def testJsonService():
+    testJsonService = TestJsonService()
+    testJsonService.setUp()
+    testJsonService.test_initial_json()
+    testJsonService.test_get_most_recent_data()
+
+
+def runAllTests():
+    testJsonService()
 
 
 if __name__ == '__main__':
-    print(getData())
+    if RUN_TESTS:
+        runAllTests()
