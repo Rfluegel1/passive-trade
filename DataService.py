@@ -6,6 +6,6 @@ class DataService:
         self.data = data
 
     def isIncreaseInPrice(self):
-        open = float(self.data['1. open'])
-        close = float(self.data['4. close'])
-        return True if close - open > 0 else False
+        openPrice = float(self.data['1. open'])
+        closePrice = float(self.data['4. close'])
+        return True if closePrice - openPrice > 0 else False
