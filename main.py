@@ -4,7 +4,7 @@ from JsonService import JsonService
 from JsonServiceSpec import TestJsonService
 
 USE_LOCAL_JSON = True
-RUN_TESTS= True
+RUN_TESTS = True
 
 
 def getApiKey():
@@ -33,6 +33,7 @@ def testJsonService():
     testJsonService.setUp()
     testJsonService.test_initial_json()
     testJsonService.test_get_most_recent_data()
+    testJsonService.test_get_penultimate_data()
 
 
 def runAllTests():
