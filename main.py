@@ -4,6 +4,7 @@ from JsonService import JsonService
 from JsonServiceSpec import TestJsonService
 
 USE_LOCAL_JSON = True
+RUN_TESTS= True
 
 
 def getApiKey():
@@ -34,6 +35,10 @@ def testJsonService():
     testJsonService.test_get_most_recent_data()
 
 
-if __name__ == '__main__':
+def runAllTests():
     testJsonService()
-    #print(getData())
+
+
+if __name__ == '__main__':
+    if RUN_TESTS:
+        runAllTests()
