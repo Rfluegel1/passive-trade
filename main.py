@@ -2,6 +2,7 @@ import json
 import urllib.request
 from JsonService import JsonService
 from JsonServiceSpec import TestJsonService
+from DataServiceSpec import TestDataService
 
 USE_LOCAL_JSON = True
 RUN_TESTS = True
@@ -35,8 +36,16 @@ def testJsonService():
     testJsonService.test_get_data()
 
 
+def testDataService():
+    testDataService = TestDataService()
+    testDataService.setUp()
+    testDataService.test_initial_data()
+    testDataService.test_is_increase_in_price()
+
+
 def runAllTests():
     testJsonService()
+    testDataService()
 
 
 if __name__ == '__main__':
