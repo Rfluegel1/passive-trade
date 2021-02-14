@@ -28,7 +28,7 @@ class TestJsonService(unittest.TestCase):
 
     def test_get_penultimate_data(self):
         self.jsonService.json = VOOJson
-        actualPenultimateData = self.jsonService.getMostRecentData()
+        actualPenultimateData = self.jsonService.getPenultimateData()
         expectedPenultimateData = {
             "1. open": "357.9200",
             "2. high": "358.0600",
