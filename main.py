@@ -32,8 +32,7 @@ def testJsonService():
     testJsonService = TestJsonService()
     testJsonService.setUp()
     testJsonService.test_initial_json()
-    testJsonService.test_get_most_recent_data()
-    testJsonService.test_get_penultimate_data()
+    testJsonService.test_get_data()
 
 
 def runAllTests():

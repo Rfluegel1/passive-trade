@@ -14,9 +14,10 @@ class TestJsonService(unittest.TestCase):
     def test_initial_json(self):
         self.assertEqual(self.jsonService.json, '')
 
-    def test_get_most_recent_data(self):
+    def test_get_data(self):
+        # Most recent
         self.jsonService.json = VOOJson
-        actualMostRecentData = self.jsonService.getMostRecentData()
+        actualMostRecentData = self.jsonService.getData()
         expectedMostRecentData = {
             "1. open": "358.0200",
             "2. high": "358.0200",
@@ -26,9 +27,8 @@ class TestJsonService(unittest.TestCase):
         }
         self.assertEqual(actualMostRecentData, expectedMostRecentData)
 
-    def test_get_penultimate_data(self):
-        self.jsonService.json = VOOJson
-        actualPenultimateData = self.jsonService.getPenultimateData()
+        # Penultimate
+        actualPenultimateData = self.jsonService.getData(-2)
         expectedPenultimateData = {
             "1. open": "357.9200",
             "2. high": "358.0600",
