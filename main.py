@@ -1,6 +1,5 @@
 import json
 import urllib.request
-from JsonService import JsonService
 from JsonServiceSpec import TestJsonService
 from DataServiceSpec import TestDataService
 
